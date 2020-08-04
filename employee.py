@@ -1,0 +1,20 @@
+import sqlite3
+con = sqlite3.connect('db1.db')
+c = con.cursor()
+
+#c.execute('create table emp (empid text primary key,name text, salary int)')
+c.execute("insert into emp values ('1','soujanya',2000000)")
+c.execute("insert into emp values ('2','gowda',90000)")
+
+con.commit()
+c.execute('select * from emp')
+data = c.fetchall()
+print(data)
+print(data[0])
+print(data[1])
+c.execute('delete from emp where empid="2" ')
+c.execute('select * from emp')
+data1 = c.fetchall()
+print(data1)
+c.close()
+con.close()
